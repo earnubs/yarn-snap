@@ -1,0 +1,22 @@
+name: yarn-test
+version: 0.1.0
+summary: Fast, reliable, and secure dependency management. https://yarnpkg.com
+description: |
+  Fast - Yarn caches every package it downloads so it never needs to download the same package again. It also parallelizes operations to maximize resource utilization so install times are faster than ever.
+  Reliable - Using a detailed, concise lockfile format and a deterministic algorithm for installs, Yarn is able to guarantee that an install that worked on one system will work exactly the same way on any other system.
+  Secure - Yarn uses checksums to verify the integrity of every installed package before its code is executed.
+architectures: ['all']
+confinement: strict
+grade: devel
+apps:
+  yarn:
+    command: bin/yarn
+  node:
+    command: bin/node
+parts:
+  node:
+    plugin: dump
+    source: https://github.com/nodejs/node/archive/v6.9.1.tar.gz
+  yarn:
+    plugin: dump
+    source: https://github.com/yarnpkg/yarn/releases/download/v0.16.1/yarn-v0.16.1.tar.gz
